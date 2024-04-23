@@ -1,0 +1,13 @@
+.fundoCadastro {
+    background-image: url(../../assets/cadastro.png);
+      background-repeat: no-repeat;
+      width: 50%;
+      height: 50%;
+      background-size: cover;
+      background-position: center;
+
+  }
+  
+  .red-star {
+    color: red;
+  }
