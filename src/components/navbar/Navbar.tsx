@@ -122,7 +122,7 @@ export default function Example() {
                       <Menu.Item>
                       {({ active }) => (
                         <Link
-                        to="/postagens"
+                        to="/produtos"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Home
@@ -133,7 +133,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="/temas"
+                        to="/categorias"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Produtos
@@ -155,7 +155,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="http://localhost:5173/"
+                        to="/categorias"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Categorias
@@ -166,7 +166,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="/temas"
+                        to="/categorias"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Contato
