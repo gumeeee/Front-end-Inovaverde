@@ -23,7 +23,7 @@ function DeletarCategoria() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('O token expirou, favor logar novamente')
+                alert('O token expirou, favor logar novamente.')
                 handleLogout()
             }
         }
@@ -31,7 +31,7 @@ function DeletarCategoria() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            alert('Você precisa estar logado.')
             navigate('/login')
         }
     }, [token])
