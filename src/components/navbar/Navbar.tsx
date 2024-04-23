@@ -144,6 +144,28 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
+                        to="/cadastroCategoria"
+                        className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
+                      >
+                        Criar Categoria
+                      </Link>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                        <Link
+                        to="http://localhost:5173/"
+                        className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
+                      >
+                        Categorias
+                      </Link>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                        <Link
                         to="/temas"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >

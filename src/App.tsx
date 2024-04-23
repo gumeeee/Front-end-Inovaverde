@@ -11,6 +11,9 @@ import Login from './pages/login/Login';
 import SobreNos from './pages/sobre-nos/Sobre';
 import Cadastro from './pages/cadastro/Cadastro';
 import { AuthProvider } from './contexts/AuthContext';
+import ListaCategorias from './components/categorias/listaCategorias/ListaCategorias';
+import FormularioCategoria from './components/categorias/formularioCategoria/FormularioCategoria';
+
 
 
 function App() {
@@ -26,6 +29,8 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/sobre" element={<SobreNos />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/categorias" element={<ListaCategorias />} />
+              <Route path="/cadastroCategoria" element={<FormularioCategoria />} />
             </Routes>
           </div>
           <Footer />
