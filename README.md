@@ -19,15 +19,17 @@
 # ✨Features
 
 - [x] Página dos produtos
-- [ ] Implementação da página do usuário
-- [ ] Cashback em crédito de carbono
+- [x] Implementação da página do usuário
+- [x] Cashback em crédito de carbono
 - [ ] Página dos fornecedores
 <br>
 
 # 📝Tabela de conteúdos
 
    * 👉[Descrição do Projeto](#descricao-do-projeto)
-   * 👉[Tabela de Conteudos](#Tabela-de-conteúdos)
+   * 👉[Features](#Features)
+   * 👉[Tabela de Conteúdos](#Tabela-de-conteúdos)
+   * 👉[Banner do Front-End](#Banner)
    * 👉[Contextualização](#Contextualização)
       * [O problema social](#O-problema-social)
       * [Quais são as causas, os impactos e as consequências do Problema Social foco do projeto na sociedade?](#local-files)
@@ -40,6 +42,11 @@
       * [Arquitetura de pastas](#arquitetura)
    * 👉[Contribuidores](#equipe)   
 <br>
+
+
+# 📢Banner do Front-End
+
+![Banner FrontEnd](https://github.com/Inova-Verde/Front-end/assets/91639335/06c9dc05-b7c3-459c-9bda-12450669629a)
 
 # 💡Contextualização
 ### O problema social
