@@ -7,7 +7,7 @@ import { buscar, atualizar, cadastrar } from '../../../services/Service';
 
 
 function FormularioProduto() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
 

@@ -30,7 +30,7 @@ export function Provider({ children }: ContextProviderProps) {
     // Remove a quantidade de um produto especifico
     function removerProduto(produtoId: number) {
         const indice = items.findIndex(items => items.id === produtoId)
-        let novoCart = [...items]
+        const novoCart = [...items]
 
         if(indice >= 0){
             novoCart.splice(indice, 1)

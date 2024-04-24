@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from 'react';
 function ListaCategorias() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
