@@ -5,5 +5,5 @@ export default interface UsuarioLogin {
     senha: string;
     foto: string;
     token: string;
-    creditoCarbono: number;
+    creditoCarbono?: number;
   }

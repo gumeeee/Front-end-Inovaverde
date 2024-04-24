@@ -1,21 +1,44 @@
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import  { useContext, useEffect } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import loginLogo from '../../assets/login.jpg'
-import Usuario from '../../models/Usuario'
+import { buscar } from '../../services/Service'
+
+
 
 function Perfil() {
-  let navigate = useNavigate()
+    const {usuario, setUsuario} = useContext(AuthContext);+
 
-    const { usuario } = useContext(AuthContext)
-
-    useEffect(() => {
-        if (usuario.token === "") {
-            alert('Você precisa estar logado')
-            navigate("/login")
+    useEffect(
+      ()=>{
+        const fetchData = async()=>{
+        try {
+          if ( usuario.id !== 0) {
+            await buscar(`/usuarios/${usuario.id}`, setUsuario, {
+                headers: {
+                  'Authorization': usuario.token
+                }
+              });
+          }
+        } catch (error) {
+          alert(`erro: ${error}`)
         }
-    }, [usuario.token])
-    
+      }
+      fetchData()
+    },[usuario.token, setUsuario])
+
+
+
+  if(!usuario){
+ return <div>
+  Carregando...
+ </div>
+  }
+  function handleChangeCardbonoValue() {
+    setUsuario({
+      ...usuario,
+      creditoCarbono: usuario?.creditoCarbono? usuario?.creditoCarbono + 5: 5
+    })
+}
   return (
     <div className='container mx-auto mt-4 rounded-2xl overflow-hidden'>
       <img className='w-full h-72 object-cover border-b-8 border-white' src={loginLogo} alt="Capa do Perfil" />
@@ -25,6 +48,11 @@ function Perfil() {
         <p>Email: {usuario.usuario}</p>
         <p>Credito Carbono: {usuario.creditoCarbono}</p>
       </div>
+
+
+      <button className='border-2 border-black items-center justify-center mx-auto relative z-10 flex flex-col hover:bg-gray-500' onClick={handleChangeCardbonoValue}>aaaaa</button>
+
+
     </div>
   )
 }

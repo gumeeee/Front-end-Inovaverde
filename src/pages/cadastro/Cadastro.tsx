@@ -16,7 +16,8 @@ function Cadastro() {
       nome: '',
       usuario: '',
       senha: '',
-      foto: ''
+      foto: '',
+      creditoCarbono: 0
     })
   
     const [usuarioResposta, setUsuarioResposta] = useState<Usuario>({
@@ -24,7 +25,8 @@ function Cadastro() {
       nome: '',
       usuario: '',
       senha: '',
-      foto: ''
+      foto: '',
+      creditoCarbono: 0
     })
   
     useEffect(() => {
