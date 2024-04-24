@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://inovaverde-1qzf.onrender.com/'
+  baseURL: 'https://projeto-integrador-inova-verde-hz2w.onrender.com/'
 })
 
 export const cadastrarUsuario = async(url: string, dados: Object, setDados: Function) => {

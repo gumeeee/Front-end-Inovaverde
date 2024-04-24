@@ -6,6 +6,7 @@ export default interface Produto {
   nome: string;
   preco: number; //pode errado (BIG DECIMAL)
   descricao: string;
+  foto: string;
   estoque: number; //pode errado (INT)
   dataValidade: Date; //pode errado (DATE)
   categoria: Categoria | null;

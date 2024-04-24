@@ -30,6 +30,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             usuario: "",
             senha: "",
             foto: "",
+            creditoCarbono: 0,
             token: ""
         };
     });
@@ -61,6 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             usuario: "",
             senha: "",
             foto: "",
+            creditoCarbono: 0,
             token: ""
         })
         sessionStorage.removeItem('@App:usuario'); // Alterado para sessionStorage
