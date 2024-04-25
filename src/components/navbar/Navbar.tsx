@@ -18,7 +18,7 @@ function classNames(...classes: string[]) {
 
 export default function Example() {
 
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const { usuario, handleLogout } = useContext(AuthContext)
 

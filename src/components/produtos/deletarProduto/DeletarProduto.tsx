@@ -8,7 +8,7 @@ import { buscar, deletar } from '../../../services/Service'
 function DeletarProduto() {
   const [produto, setProduto] = useState<Produto>({} as Produto)
 
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const { id } = useParams<{ id: string }>()
 

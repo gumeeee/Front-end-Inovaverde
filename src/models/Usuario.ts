@@ -6,5 +6,6 @@ export default interface Usuario {
   usuario: string;
   senha: string;
   foto: string;
+  creditoCarbono: number;
   produto?: Produto | null;
 }

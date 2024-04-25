@@ -7,7 +7,7 @@ import { buscar, atualizar, cadastrar } from '../../../services/Service';
 
 
 function FormularioProduto() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
 
@@ -30,6 +30,7 @@ function FormularioProduto() {
     descricao: '',
     estoque: 0,
     dataValidade: new Date,  //data
+    foto: '',
     categoria: null,
     usuario: null,
 
@@ -165,6 +166,19 @@ function FormularioProduto() {
             type="text"
             placeholder="Preço"
             name="preco"
+            required
+            className="border-2 border-slate-700 rounded p-2"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="descricao">Foto</label>
+          <input
+            value={produto.foto}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            type="text"
+            placeholder="Foto"
+            name="foto"
             required
             className="border-2 border-slate-700 rounded p-2"
           />

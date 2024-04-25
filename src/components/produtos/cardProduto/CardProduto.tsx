@@ -14,6 +14,7 @@ function CardProduto({post}: CardProdutoProps) {
           <h3 className='text-lg text-white font-bold text-center uppercase '>{post.usuario?.nome}</h3>
         </div>
         <div className='p-4 '>
+          <img src={post.foto} className='h-12 rounded-full' alt="" />
           <h4 className='text-lg font-semibold uppercase'>{post.nome}</h4>
           <p>Preço R$ {post.preco}</p>
           <p>Estoque disponível: {post.estoque}</p>
