@@ -113,6 +113,7 @@ export default function Example() {
       className="h-12 w-12 rounded-full mb-2" // Ajuste o tamanho e adicione um espaço abaixo (margin-bottom) para separar da próxima linha
     />
     <span>@{usuario.nome}</span>
+    <span className="font-bold">Creditos: {usuario.creditoCarbono}</span>
   </div>
 </div>
 </Link>

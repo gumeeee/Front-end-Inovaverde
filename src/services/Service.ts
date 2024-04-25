@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 
 const api = axios.create({
-  baseURL: 'https://projeto-integrador-inova-verde-hz2w.onrender.com/'
+  baseURL: 'https://projeto-integrador-inova-verde-hz2w.onrender.com'
 })
 
 export const cadastrarUsuario = async(url: string, dados: object, setDados: Dispatch<SetStateAction<any>>) => {
