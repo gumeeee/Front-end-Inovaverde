@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../../contexts/AuthContext.tsx";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ModalCartProduto from "../produtos/modalProduto/ModalCartProduto.tsx";
 
 const navigation = [
   { name: "Criar Conta", to: "/cadastro", current: false },
@@ -73,6 +74,13 @@ export default function Example() {
             </div>
             {usuario.id !== 0 && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="flex justify-center items-center">
+                  <div className="relative py-2 pr-2">
+                    <div>
+                      <ModalCartProduto />
+                    </div>
+                  </div>
+                </div>
                 <a className="text-xs text-white bg-green-800 rounded-md px-3 py-1 font-medium">
                   @{usuario.nome}
                 </a>

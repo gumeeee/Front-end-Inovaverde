@@ -23,6 +23,7 @@
     "react-timezone-select": "^3.2.3",
     "react-toastify": "^9.1.2",
     "reactjs-popup": "^2.0.6",
+    "styled-components": "^6.1.8",
     "swiper": "^11.1.1"
   },
   "devDependencies": {
