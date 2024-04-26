@@ -17,7 +17,7 @@ function FormularioCategoria() {
   async function buscarPorId(id: string) {
     await buscar(`/categorias/${id}`, setCategoria, {
       headers: {
-        Authorization: token,
+        'Authorization': token
       },
     });
   }
@@ -57,6 +57,7 @@ function FormularioCategoria() {
           handleLogout()
         } else {
           alert('Erro ao atualizar a categoria.')
+          console.log(error)
         }
 
       }
@@ -107,7 +108,7 @@ function FormularioCategoria() {
         <label htmlFor="nome">Nome</label>
           <input
             type="text"
-            placeholder="Nome"
+            placeholder="Ex.: Produtos orgânicos e sustentáveis"
             name='nome'
             className="border-2 border-slate-700 rounded p-2"
             value={categoria.nome}
@@ -117,7 +118,7 @@ function FormularioCategoria() {
           <label htmlFor="subcategoria">Subcategoria</label>
           <input
             type="text"
-            placeholder="Subcategoria"
+            placeholder="Ex.: Frutas e vegetais orgânicos"
             name='subcategoria'
             className="border-2 border-slate-700 rounded p-2"
             value={categoria.subcategoria}

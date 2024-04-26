@@ -17,7 +17,7 @@ function Home() {
         <div className="cor-fundo flex justify-center">
           <div className='container grid grid-cols-2 text-white'>
             <div className="flex flex-col gap-4 items-center justify-center py-4">
-              <h2 className='text-5xl font-bold'>Olá, {usuario.nome},</h2>
+              <h2 className='text-5xl font-bold'>Olá {usuario.nome},</h2>
               <h3 className='text-5xl font-bold'>você está na Inova Verde!</h3>
               <p className='text-xl'>Do produtor sustentável para a sua casa.</p>
 
@@ -37,7 +37,7 @@ function Home() {
           <section className="mt-8">
             <div className="flex my-4">
               <div className="pl-20">
-                <h4 className="text-blue-800 font-serif text-2xl">Quem somos</h4>
+                <h4 className="text-blue-900 font-serif text-2xl font-bold">Quem somos</h4>
                 <img src={ecommerce} alt="" className='w-4/5 mt-2' />
               </div>
               <div className="text-justify mt-10 pr-20">
@@ -48,16 +48,27 @@ function Home() {
             </div>
           </section>
           <section className="mt-8">
-            <div className="flex my-4">
-              <div className="text-justify mt-10 px-20">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis fuga suscipit quos dolore illum odit iusto, accusantium accusamus beatae nam aut itaque dolorum provident voluptates mollitia praesentium quibusdam cupiditate eius.
-                Quidem excepturi molestias iste quam dolorem voluptas nihil omnis ipsa dolor quo? Ad nemo laudantium maiores similique ut, unde perferendis nulla aut alias, dolorum veritatis illum pariatur. Dolorum, maiores sit.
-                Maiores delectus illo eligendi autem molestias minus, neque unde officia odit quisquam accusantium! Inventore laborum, et at illum iure deleniti temporibus iusto accusamus aut laboriosam, reiciendis repudiandae molestiae beatae quidem.
-                Illum fugit tempore quam optio repellat sed eligendi amet? Quod laborum ex obcaecati nisi illum, asperiores quibusdam quos ab illo facere repellendus explicabo, commodi deleniti praesentium! Voluptate enim illo magni.</p>
+            <div className="flex my-4 px-20">
+              <div className="text-justify mt-10 mr-20">
+                <p>Nossa missão principal é promover ativamente a transformação do mundo em um lugar melhor, onde a sustentabilidade e a inovação são os pilares fundamentais.
+                   Nosso compromisso é buscar soluções criativas para os desafios ambientais atuais, incentivando o consumo consciente e a preservação do meio ambiente em todas as nossas atividades.</p>
+                <br />
+                <p>Nossa meta é nos tornarmos líderes globais na conscientização ambiental e no fornecimento de produtos sustentáveis, impulsionando a mudança positiva em direção a um futuro mais verde e sustentável.</p>
+                <br />
+                <h5 className="font-bold font-serif text-blue-500">Nossos valores: </h5>
+                <ol className="list-decimal pl-10">
+                  <li>Sustentabilidade: Comprometimento com práticas ecológicas e responsáveis em todas as nossas operações.</li>
+                  <li>Inovação: Busca contínua por soluções criativas e eficazes para os desafios ambientais.</li>
+                  <li>Qualidade: Oferecer produtos agrícolas e naturais de alta qualidade, cuidadosamente selecionados para promover a sustentabilidade.</li>
+                  <li>Consciência: Educar e inspirar nossos clientes a fazerem escolhas conscientes e a participarem ativamente na redução das emissões de carbono.</li>
+                  <li>Compromisso: Apoiar e incentivar projetos ambientais, recompensando nossos clientes com créditos de carbono para cada compra realizada.</li>
+                  <li>Colaboração: Trabalhar em parceria com comunidades locais, organizações e clientes para alcançar objetivos comuns de preservação ambiental.</li>
+                  <li>Transparência: Manter uma comunicação aberta e honesta sobre nossas práticas e impactos ambientais.</li>
+                </ol>
               </div>
-              <div className="pr-20 pl-10">
-                <h4 className="text-blue-800 font-serif text-2xl text-end">Nossa missão</h4>
-                <img src={arara} alt="" className='mt-2' />
+              <div className="justify-end w-full relative">
+                <h4 className="text-blue-900 font-serif text-2xl text-end font-bold">Nossa missão</h4>
+                <img src={arara} alt="" className='w-full mt-2 absolute end' />
               </div>
             </div>
           </section>

@@ -48,7 +48,7 @@ export default function Example() {
                 </Disclosure.Button>
               </div>
               <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
-              <div className="flex flex-shrink-0 items-center" style={{ color: 'white', fontFamily: 'Bungee, sans-serif', fontSize: '24px' }}>
+              <div className="flex flex-shrink-0 items-center" style={{ color: 'white', fontSize: '24px' }}>
               <Link to="/login">Inova Verde</Link>
 </div>
 {usuario.id == 0 && (
@@ -113,7 +113,7 @@ export default function Example() {
       className="h-12 w-12 rounded-full mb-2" // Ajuste o tamanho e adicione um espaço abaixo (margin-bottom) para separar da próxima linha
     />
     <span>@{usuario.nome}</span>
-    <span className="font-bold">Creditos: {usuario.creditoCarbono}</span>
+    <span className="font-bold">Créditos: 10</span>
   </div>
 </div>
 </Link>
@@ -178,7 +178,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="/categorias"
+                        to="/contato"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Contato
@@ -189,7 +189,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="/cadastroTema"
+                        to="/sobre"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                       >
                         Sobre
@@ -200,7 +200,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                         <Link
-                        to="http://localhost:5173/"
+                        to="/"
                         className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700 border-t border-b')}
                         onClick={() => logout()}
                       >

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
-import { Dna } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Produto from '../../../models/Produto';
 import { buscar } from '../../../services/Service';
 import CardProduto from '../cardProduto/CardProduto';
-//import { alert } from '../../../utils/alert';
+
 
 function ListaProdutos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -42,17 +42,20 @@ function ListaProdutos() {
   }, [produtos.length]);
   return (
     <>
+    <div className='absolute flex mt-5 w-screen justify-center items-center'>
       {produtos.length === 0 && (
-        <Dna
-          visible={true}
-          height="200"
-          width="200"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper mx-auto"
+        <Oval
+        visible={true}
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="oval-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
         />
       )}
-      <div className='container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+    </div>
+      <div className='my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center'>
         {produtos.map((produto) => (
           <CardProduto key={produto.id} post={produto} />
         ))}

@@ -6,32 +6,29 @@ interface CardProdutoProps {
 }
 
 function CardProduto({post}: CardProdutoProps) {
-  return (
-    <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-      <div>
-        <div className="flex w-full bg-green-400 py-2 px-4 items-center gap-4">
-          <img src={post.usuario?.foto} className='h-12 rounded-full' alt="" />
-          <h3 className='text-lg text-white font-bold text-center uppercase '>{post.usuario?.nome}</h3>
+  // const date = new Date(post.dataValidade);
+  // const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  const estoqueProduto = Math.floor(post.estoque);
+
+  return (  
+    <div className="card card-compact w-80 bg-green-800 shadow-xl rounded-lg">
+      <figure><img src={post.foto} alt={post.nome} className="rounded-t-lg min-h-60 max-h-60"/></figure>
+      <div className="card-body ml-3">
+        <p className="card-title text-2xl font-semibold text-white">{post.nome}</p>
+        <p className="font-bold text-green-100">R${post.preco}</p>
+        <p className="text-green-50 text-sm">Estoque disponível: {estoqueProduto}</p>
+        <p className="text-green-50 text-sm">{post.descricao}</p>
+        <div className="card-actions">
+          <button className="btn btn-primary bg-green-600 text-white rounded-lg w-32 h-9 py-0.5 text-center my-4 hover:bg-green-200 hover:text-green-900">Comprar</button>
+          <div className="flex -ml-3">
+            <Link to={`/editarProduto/${post.id}`} className='w-full text-white bg-green-600 hover:bg-green-700 flex items-center justify-center py-2 rounded-bl-lg'>
+              <button>Editar</button>
+            </Link>
+            <Link to={`/deletarProduto/${post.id}`} className='text-white bg-red-600 hover:bg-red-700 w-full flex items-center justify-center rounded-br-lg'>
+              <button>Deletar</button>
+            </Link>
+       </div>
         </div>
-        <div className='p-4 '>
-          <img src={post.foto} className='h-12 rounded-full' alt="" />
-          <h4 className='text-lg font-semibold uppercase'>{post.nome}</h4>
-          <p>Preço R$ {post.preco}</p>
-          <p>Estoque disponível: {post.estoque}</p>
-          <p>Categoria: {post.categoria?.subcategoria}</p>
-          <p>Data: {new Intl.DateTimeFormat(undefined, {
-                    dateStyle: 'full',
-                    timeStyle: 'medium',
-                  }).format(new Date(post.dataValidade))}</p>
-        </div>
-      </div>
-      <div className="flex">
-      <Link to={`/editarProduto/${post.id}`} className='w-full text-white bg-green-400 hover:bg-green-800 flex items-center justify-center py-2'>
-          <button>Editar</button>
-        </Link>
-        <Link to={`/deletarProduto/${post.id}`} className='text-white bg-red-400 hover:bg-red-700 w-full flex items-center justify-center'>
-          <button>Deletar</button>
-        </Link>
       </div>
     </div>
   )

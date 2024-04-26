@@ -152,7 +152,7 @@ function FormularioProduto() {
             value={produto.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
-            placeholder="Nome"
+            placeholder="Ex.: Tomate cereja"
             name="nome"
             required
             className="border-2 border-slate-700 rounded p-2"
@@ -164,7 +164,7 @@ function FormularioProduto() {
             value={produto.preco}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
-            placeholder="Preço"
+            placeholder="Ex.: 20.43"
             name="preco"
             required
             className="border-2 border-slate-700 rounded p-2"
@@ -172,12 +172,12 @@ function FormularioProduto() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="descricao">Foto</label>
+          <label htmlFor="descricao">Foto (Tenha a certeza de que é um link válido)</label>
           <input
             value={produto.foto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
-            placeholder="Foto"
+            placeholder="Ex.: https://images.pexels.com/photos/693794/pexels-photo-693794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             name="foto"
             required
             className="border-2 border-slate-700 rounded p-2"
@@ -190,7 +190,7 @@ function FormularioProduto() {
             value={produto.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
-            placeholder="Descrição"
+            placeholder="Ex.: Tomatinho cereja é bom de se colocar nas saladas do dia a dia."
             name="descricao"
             required
             className="border-2 border-slate-700 rounded p-2"
@@ -203,7 +203,7 @@ function FormularioProduto() {
             value={produto.estoque}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
-            placeholder="Quantidade em estoque"
+            placeholder="Ex.: 50"
             name="estoque"
             required
             className="border-2 border-slate-700 rounded p-2"
@@ -216,12 +216,12 @@ function FormularioProduto() {
             <option value="" selected disabled>Selecione uma categoria</option>
             {categorias.map((categoria) => (
               <>
-                <option value={categoria.id} >{categoria.nome}</option>
+                <option value={categoria.id} >{categoria.subcategoria}</option>
               </>
             ))}
           </select>
         </div>
-        <button disabled={carregandoCategoria} type='submit' className='rounded disabled:bg-slate-200 bg-green-400 hover:bg-green-800 text-white font-bold w-1/2 mx-auto block py-2'>
+        <button disabled={carregandoCategoria} type='submit' className='rounded disabled:bg-slate-200 bg-green-400 hover:bg-green-800 text-white font-bold w-1/2 mx-auto my-4 block py-2'>
           {carregandoCategoria ? <span>Carregando</span> : id !== undefined ? 'Editar' : 'Cadastrar'}
         </button>
       </form>
