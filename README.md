@@ -20,7 +20,7 @@
 
 - [x] Página dos produtos
 - [x] Implementação da página do usuário
-- [x] Cashback em crédito de carbono
+- [ ] Cashback em crédito de carbono
 - [ ] Página dos fornecedores
 <br>
 
@@ -134,10 +134,10 @@ A seguir temos exemplos de como será construído as categorias e suas respectiv
   - **Subcategoria:** Frutas orgânicas e Vegetais orgânicos.
 
 - **Categoria 2:** Produtos de Agricultura de Conservação.
-  - **Subcategoria:** Kits de compostagem doméstica, Fertilizantes orgânicos e Produtos para manejo de pragas e doenças orgânicos.
+  - **Subcategoria:** Kits de compostagem doméstica, Fertilizantes orgânicos e Produtos para manejo de pragas e doenças orgânicas.
 
 - **Categoria 3:** Energia Renovável para Residências e Pequenos Negócios.
-  - **Subcategoria:** Kits de energia solar para residências, Sistemas de
+  - **Subcategoria:** Kits de energia solar para residências, Sistemas de aquecimento de água solar, Iluminação LED de baixo consumo energético.
 
 <br>
 <br>
