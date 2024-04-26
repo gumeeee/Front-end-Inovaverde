@@ -1,4 +1,4 @@
-import { Dna } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Categoria from '../../../models/Categoria';
@@ -17,7 +17,9 @@ function ListaCategorias() {
   async function buscarCategorias() {
     try {
       await buscar('/categorias', setCategorias, {
-        headers: { Authorization: token },
+        headers: {
+          Authorization: token,
+        },
       });
     } catch (error: any) {
       if (error.toString().includes('403')) {
@@ -40,13 +42,14 @@ function ListaCategorias() {
   return (
     <>
       {categorias.length === 0 && (
-        <Dna
-          visible={true}
-          height="200"
-          width="200"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper mx-auto"
+        <Oval
+        visible={true}
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="oval-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
         />
       )}
       <div className="flex justify-center w-full my-4">
