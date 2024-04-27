@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../../contexts/AuthContext.tsx";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Avatar from "../avatar/Avatar.tsx";
 import ModalCartProduto from "../produtos/modalProduto/ModalCartProduto.tsx";
 
 const navigation = [
@@ -31,9 +32,9 @@ export default function Example() {
       {({ open }) => (
         <>
           <div className="relative flex h-16 items-center justify-between pl-16 pr-10">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
-              <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-green-400 hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-green-400 hover:bg-green-700 hover:text-white">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 {open ? (
@@ -48,11 +49,12 @@ export default function Example() {
                 className="flex flex-shrink-0 items-center"
                 style={{ color: "white", fontSize: "24px" }}
               >
-                <Link to="/login">Inova Verde</Link>
+                <Link to="/login" style={{ fontFamily: 'Poppins, sans-serif' }} onClick={() => logout()}>Inova Verde</Link>
+
               </div>
               {usuario.id == 0 && (
-                <div className="hidden sm:ml-6 sm:block pl-10">
-                  <div className="flex space-x-4 justify-end w-full">
+                <div className="hidden sm:flex absolute right-6">
+                  <div className="flex justify-end w-full">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -86,16 +88,12 @@ export default function Example() {
                 </a>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="relative flex rounded-full bg-green-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-800">
-                      <span className="absolute -inset-1.5" />
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full border border-white-400 border-2"
-                        src={usuario.foto}
-                        alt=""
-                      />
+                <Menu as="div" className="relative ml-3 z-0">
+                  <div className="z-2">
+                    <Menu.Button className="z-2 relative flex rounded-full bg-green-800 text-sm hover:border-green-300 hover:border-2">
+                      <span className="z-2 absolute -inset-1.5" />
+                      <span className="sr-only z-2">Open user menu</span>
+                      <Avatar foto={usuario.foto} bordercolour="black" size="small"/>
                     </Menu.Button>
                   </div>
 
@@ -108,7 +106,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-2 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -127,13 +125,15 @@ export default function Example() {
                               <div className="flex flex-col items-center pb-1 pt-2">
                                 {" "}
                                 {/* Flex container para organizar elementos em colunas */}
-                                <img
-                                  src={usuario.foto}
-                                  alt="Usuário"
-                                  className="h-12 w-12 rounded-full mb-2" // Ajuste o tamanho e adicione um espaço abaixo (margin-bottom) para separar da próxima linha
-                                />
-                                <span>@{usuario.nome}</span>
-                                <span className="font-bold">Créditos: 10</span>
+                                <Link to="/perfil">
+                                  <Avatar
+                                    foto={usuario.foto}
+                                    size="big"
+                                    bordercolour="black"
+                                  />
+                                </Link>
+                                <span>{usuario.usuario}</span>
+                                <span className="font-bold">Créditos: {usuario.creditoCarbono}</span>
                               </div>
                             </div>
                           </Link>

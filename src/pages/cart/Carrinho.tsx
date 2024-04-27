@@ -6,7 +6,8 @@ function Carrinho() {
 
   return (
     <>
-      <div className="flex justify-end m-2">
+
+      <div className="flex justify-end m-2 z-50">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           onClick={limparCart}
@@ -22,6 +23,7 @@ function Carrinho() {
           </div>
         </div>
       </div>
+
     </>
   );
 }

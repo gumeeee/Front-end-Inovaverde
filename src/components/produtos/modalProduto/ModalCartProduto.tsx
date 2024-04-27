@@ -28,7 +28,7 @@ function ModalCartProduto() {
           </button>
         </div>
         {show && (
-          <div className="justify-end w-full">
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-90 z-50">
             <div
               className="w-1/2 h-full bg-black bg-opacity-90 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 sticky-0"
               id="chec-div"

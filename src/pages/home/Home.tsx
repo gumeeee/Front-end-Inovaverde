@@ -28,17 +28,17 @@ function Home() {
             </div>
 
             <div className="flex justify-center ">
-              <img src={homeLogo} alt="" className='w-2/3' />
+              <img src={homeLogo} alt="" className='w-2/3 z-auto' />
 
             </div>
           </div>
         </div>
         <div>
-          <section className="mt-8">
+          <section className="z-0 mt-8">
             <div className="flex my-4">
               <div className="pl-20">
                 <h4 className="text-blue-900 font-serif text-2xl font-bold">Quem somos</h4>
-                <img src={ecommerce} alt="" className='w-4/5 mt-2' />
+                <img src={ecommerce} alt="" className='z-0 w-4/5 mt-2' />
               </div>
               <div className="text-justify mt-10 pr-20">
                 <p>Somos uma empresa apaixonada por sustentabilidade e inovação, buscando soluções criativas para os desafios ambientais atuais. Nossa missão é tornar o mundo um lugar melhor, promovendo o consumo consciente e a preservação do meio ambiente.
@@ -74,7 +74,7 @@ function Home() {
           </section>
           <section className="mt-8">
             <div className="relative mt-20">
-              <img src={planta} className="object-cover rounded-md" alt="" />
+              <img src={planta} className="object-cover rounded-md z-0" alt="" />
               <div className="absolute inset-0 bg-green-900 opacity-60 rounded-md">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h2 className="text-white text-3xl font-bold opacity-100 text-center px-20">Junte-se a nós na jornada rumo a um futuro mais verde e sustentável. Vamos inovar juntos, preservando o planeta para as gerações futuras!</h2>

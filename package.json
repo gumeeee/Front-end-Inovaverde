@@ -16,6 +16,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "add": "^2.0.6",
     "axios": "^1.6.8",
+    "google-fonts": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.4.5",
