@@ -1,6 +1,6 @@
 import Produto from '../../../models/Produto';
 import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 
 interface CardProdutoProps {
@@ -8,6 +8,23 @@ interface CardProdutoProps {
 }
 
 function CardProduto({ post }: CardProdutoProps): JSX.Element {
+
+  const [carrinhoQuantidade, setQuantidade] = useState(1);
+
+  const totalProdutoUnico = carrinhoQuantidade * post.preco;
+
+  const handleIncrease = () => {
+    if (carrinhoQuantidade < post.estoque) {
+      setQuantidade(carrinhoQuantidade + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (carrinhoQuantidade > 1) {
+      setQuantidade(carrinhoQuantidade - 1);
+    }
+  };
+
   const { removerDoCarrinho } = useContext(CarrinhoContext); // Importe removerDoCarrinho do contexto
 
   const handleRemoveFromCart = () => {
@@ -18,27 +35,37 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
   return (  
     <>
     <div className="mb-10 border-b pb-8 border-green-200">
-    <div className="w-1/2 flex gap-24">
+    <div className="w-1/2 flex gap-4">
 
     <img
       src={post.foto} alt={post.nome}
       className="rounded-lg w-full h-full object-center object-cover"
     />
-    <div className= "flex">
-<p>qnt:</p>
-<select className="mt-12 py-2 px-1 border border-gray-200 mr-6 focus:outline-none" style={{ height: '45px' }}>
-        <option>01</option>
-        <option>02</option>
-        <option>03</option>
-        <option>04</option>
-        <option>05</option>
-        <option>06</option>
-        <option>07</option>
-        <option>08</option>
-        <option>09</option>
-        <option>10</option>
-      </select>
-      </div>
+
+<button 
+  onClick={handleDecrease} 
+  style={{ height: '20px', width: '20px', marginLeft: '80px', paddingBottom: '9px', marginTop: '91px' }}
+  className='flex items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white ml-5'
+>
+  -
+</button>
+
+<input 
+  type="text" 
+  value={carrinhoQuantidade} 
+  readOnly 
+  style={{ textAlign: 'center', width: '40px', height: '24px', marginTop: '90px' }}
+  className='border-2'
+/>
+
+<button 
+  onClick={handleIncrease} 
+  style={{ height: '20px', width: '20px', marginLeft: '4px', paddingBottom: '9px', marginTop: '91px'  }} // Adicione paddingBottom aqui
+  className='flex items-center justify-center rounded-full bg-blue-500 p-2 text-xs text-white ml-5'
+>
+  +
+</button>
+      
   </div>
 
     <div className="md:pl-3 pr-10">
@@ -63,7 +90,7 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
     </p>
       </div>
       <p className="text-base font-black leading-none text-gray-800">
-        R$ {post.preco}
+        R$ {totalProdutoUnico.toFixed(2)}
       </p>
     </div>
   </div>
