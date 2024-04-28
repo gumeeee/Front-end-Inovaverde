@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../../contexts/AuthContext.tsx";
@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../avatar/Avatar.tsx";
 import ModalCartProduto from "../produtos/modalProduto/ModalCartProduto.tsx";
+import Produto from "../../models/Produto.ts";
 
 const navigation = [
   { name: "Criar Conta", to: "/cadastro", current: false },
@@ -20,6 +21,8 @@ export default function Example() {
   const navigate = useNavigate();
 
   const { usuario, handleLogout } = useContext(AuthContext);
+
+  const [produtos, setProdutos] = useState<Produto[]>([]);
 
   function logout() {
     handleLogout();
@@ -106,7 +109,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style={{ zIndex: 999 }}>
+                    <Menu.Items className="absolute right-0 z-2 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <Link

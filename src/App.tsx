@@ -18,12 +18,14 @@ import Carrossel from "./components/carrossel/Carrossel";
 import Carrinho from "./pages/cart/Carrinho";
 import Loja from "./pages/loja/Loja";
 import ListaIntegrantes from "./pages/listaIntegrantes/ListaIntegrantes";
+import { StoreProvider } from "./contexts/StoreContext";
 
 function App() {
 
   return (
     <>
       <AuthProvider>
+      <StoreProvider>
         <BrowserRouter>
           <Navbar />
           <div className="min-h-[80vh]">
@@ -65,6 +67,7 @@ function App() {
           </div>
           <Footer />
         </BrowserRouter>
+        </StoreProvider>
       </AuthProvider>
     </>
   );

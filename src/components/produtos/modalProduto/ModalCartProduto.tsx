@@ -1,14 +1,60 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CardProdutoCarrinho from "../cardProduto/CardProdutoCarrinho";
+import Produto from "../../../models/Produto";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { buscar } from "../../../services/Service";
+import { useNavigate } from "react-router-dom";
+
 
 function ModalCartProduto() {
   const [show, setShow] = useState(false);
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const navigate = useNavigate();
+
+  const subtotal = produtos.reduce((acc, produto) => acc + parseFloat(produto.preco), 0);
+  const frete = 5.00;
+  const taxa = 6.00;
+  const total = subtotal + frete + taxa;
+
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
+
+
+  useEffect(() => {
+    if (token === '') {
+      alert('Você precisa estar logado.');
+      navigate('/');
+    }
+  }, [token]);
+
+  async function buscarProdutos() {
+    try {
+      await buscar('/produtos', setProdutos, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error: any) {
+      if (error.toString().includes('403')) {
+        alert('O token expirou, favor logar novamente.')
+        handleLogout()
+      }
+    }
+  }
+
+  
+
+  useEffect(() => {
+    buscarProdutos();
+  }, [produtos.length]);
+
   return (
     <>
       <div>
         <div className="items-center grid justify-center ">
           <button onClick={() => setShow(!show)}>
             <p className="flex h-1 w-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white ml-5">
-              2
+            {produtos.length}
             </p>
             <svg
               color="white"
@@ -69,93 +115,13 @@ function ModalCartProduto() {
                     <p className="text-5xl font-black leading-10 text-green-800 pt-3">
                       Carrinho
                     </p>
-                    <div className="md:flex items-center mt-14 py-8 border-t border-green-200">
-                      <div className="h-full w-1/3">
-                        <img
-                          src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          className="rounded-lg w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <div className="md:pl-3 md:w-3/4 w-full">
-                        <div className="flex items-center justify-between w-full pt-1">
-                          <p className="text-base font-black leading-none text-gray-800">
-                            Tomate
-                          </p>
-                          <select className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
-                            <option>01</option>
-                            <option>02</option>
-                            <option>03</option>
-                            <option>04</option>
-                            <option>05</option>
-                            <option>06</option>
-                            <option>07</option>
-                            <option>08</option>
-                            <option>09</option>
-                            <option>10</option>
-                          </select>
-                        </div>
-                        <p className="text-xs leading-3 text-gray-600 pt-2">
-                          Produto agrícola
-                        </p>
+                    <div className="md:flex items-center py-8">
 
-                        <div className="flex items-center justify-between pt-5 pr-6">
-                          <div className="flex itemms-center">
-                            <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                              Adicionar aos favoritos
-                            </p>
-                            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                              Remover
-                            </p>
-                          </div>
-                          <p className="text-base font-black leading-none text-gray-800">
-                            R$ 3.00
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:flex items-center py-8 border-t border-b border-green-200">
-                      <div className="h-full w-1/3">
-                        <img
-                          src="https://images.pexels.com/photos/693794/pexels-photo-693794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          className="rounded-lg w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <div className="md:pl-3 md:w-3/4 w-full">
-                        <div className="flex items-center justify-between w-full pt-1">
-                          <p className="text-base font-black leading-none text-gray-800">
-                            Maçã Verde
-                          </p>
-                          <select className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
-                            <option>01</option>
-                            <option>02</option>
-                            <option>03</option>
-                            <option>04</option>
-                            <option>05</option>
-                            <option>06</option>
-                            <option>07</option>
-                            <option>08</option>
-                            <option>09</option>
-                            <option>10</option>
-                          </select>
-                        </div>
-                        <p className="text-xs leading-3 text-gray-600 pt-2">
-                          Produto agrícola
-                        </p>
-
-                        <div className="flex items-center justify-between pt-5 pr-6">
-                          <div className="flex itemms-center">
-                            <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                              Adicionar aos favoritos
-                            </p>
-                            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                              Remover
-                            </p>
-                          </div>
-                          <p className="text-base font-black leading-none text-gray-800">
-                            R$ 5.50
-                          </p>
-                        </div>
-                      </div>
+                    <div className='md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center border-t py-8 border-green-200'>
+      {produtos.map((produto) => (
+        <CardProdutoCarrinho key={produto.id} post={produto} />
+      ))}
+    </div>
                     </div>
                   </div>
                   <div className="xl:w-1/2 md:w-1/3 w-full bg-green-100 h-full">
@@ -169,7 +135,7 @@ function ModalCartProduto() {
                             Subtotal
                           </p>
                           <p className="text-base leading-none text-gray-800">
-                            R$ 8.50
+                            R$ {subtotal.toFixed(2)}
                           </p>
                         </div>
                         <div className="flex items-center justify-between pt-5">
@@ -177,7 +143,7 @@ function ModalCartProduto() {
                             Frete
                           </p>
                           <p className="text-base leading-none text-gray-800">
-                            R$ 5.00
+                            R$ {frete.toFixed(2)}
                           </p>
                         </div>
                         <div className="flex items-center justify-between pt-5">
@@ -185,7 +151,7 @@ function ModalCartProduto() {
                             Taxa
                           </p>
                           <p className="text-base leading-none text-gray-800">
-                            R$ 6.00
+                            R$ {taxa.toFixed(2)}
                           </p>
                         </div>
                       </div>
@@ -195,7 +161,7 @@ function ModalCartProduto() {
                             Total
                           </p>
                           <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                            R$ 19.50
+                          {total.toFixed(2)}
                           </p>
                         </div>
                         <button
