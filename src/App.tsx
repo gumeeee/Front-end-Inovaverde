@@ -20,6 +20,7 @@ import Loja from "./pages/loja/Loja";
 import ListaIntegrantes from "./pages/listaIntegrantes/ListaIntegrantes";
 
 function App() {
+
   return (
     <>
       <AuthProvider>
@@ -34,6 +35,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/categorias" element={<ListaCategorias />} />
               <Route path="/contato" element={<ListaCategorias />} />
+
               <Route
                 path="/cadastroCategoria"
                 element={<FormularioCategoria />}
@@ -52,6 +54,7 @@ function App() {
                 path="/editarProduto/:id"
                 element={<FormularioProduto />}
               />
+
               <Route path="/deletarProduto/:id" element={<DeletarProduto />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/carrossel" element={<Carrossel />} />

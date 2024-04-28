@@ -1,8 +1,17 @@
-import { useContext } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useContext, useState } from "react";
 import { Context } from "../../contexts/Context";
+
+interface Produto {
+  id: number;
+  nome: string;
+  preco: number;
+  categoria: string
+}
 
 function Carrinho() {
   const { items, limparCart } = useContext(Context);
+
 
   return (
     <>

@@ -106,7 +106,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-2 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style={{ zIndex: 999 }}>
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -168,19 +168,21 @@ export default function Example() {
                         )}
                       </Menu.Item>
 
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/cadastroProduto"
-                            className={classNames(
-                              active ? "bg-green-100" : "",
-                              "block px-4 py-2 text-sm text-green-700 border-t border-b"
-                            )}
-                          >
-                            Criar Produto
-                          </Link>
-                        )}
-                      </Menu.Item>
+                      {usuario.id === 1 && (
+  <Menu.Item>
+    {({ active }) => (
+      <Link
+        to="/cadastroProduto"
+        className={classNames(
+          active ? "bg-green-100" : "",
+          "block px-4 py-2 text-sm text-green-700 border-t border-b"
+        )}
+      >
+        Criar Produto
+      </Link>
+    )}
+  </Menu.Item>
+)}
 
                       <Menu.Item>
                         {({ active }) => (
@@ -196,6 +198,7 @@ export default function Example() {
                         )}
                       </Menu.Item>
 
+                      {usuario.id === 1 && (
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -209,6 +212,7 @@ export default function Example() {
                           </Link>
                         )}
                       </Menu.Item>
+                      )}
 
                       <Menu.Item>
                         {({ active }) => (
