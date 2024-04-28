@@ -1,15 +1,19 @@
 import Produto from '../../../models/Produto';
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
+import { useContext } from 'react';
+
 
 interface CardProdutoProps {
   post: Produto;
 }
 
 function CardProduto({ post }: CardProdutoProps): JSX.Element {
+  const { removerDoCarrinho } = useContext(CarrinhoContext); // Importe removerDoCarrinho do contexto
 
-
-
-
-
+  const handleRemoveFromCart = () => {
+    // Chame removerDoCarrinho para remover o item do carrinho
+    removerDoCarrinho(post.id);
+  };
 
   return (  
     <>
@@ -20,7 +24,8 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
       src={post.foto} alt={post.nome}
       className="rounded-lg w-full h-full object-center object-cover"
     />
-
+    <div className= "flex">
+<p>qnt:</p>
 <select className="mt-12 py-2 px-1 border border-gray-200 mr-6 focus:outline-none" style={{ height: '45px' }}>
         <option>01</option>
         <option>02</option>
@@ -33,6 +38,7 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
         <option>09</option>
         <option>10</option>
       </select>
+      </div>
   </div>
 
     <div className="md:pl-3 pr-10">
@@ -52,9 +58,9 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
         <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
           Adicionar aos favoritos
         </p>
-        <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-          Remover
-        </p>
+        <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer" onClick={handleRemoveFromCart}>
+      Remover
+    </p>
       </div>
       <p className="text-base font-black leading-none text-gray-800">
         R$ {post.preco}

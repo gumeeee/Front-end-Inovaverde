@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../../contexts/AuthContext.tsx";
@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../avatar/Avatar.tsx";
 import ModalCartProduto from "../produtos/modalProduto/ModalCartProduto.tsx";
-import Produto from "../../models/Produto.ts";
 
 const navigation = [
   { name: "Criar Conta", to: "/cadastro", current: false },
@@ -21,8 +20,6 @@ export default function Example() {
   const navigate = useNavigate();
 
   const { usuario, handleLogout } = useContext(AuthContext);
-
-  const [produtos, setProdutos] = useState<Produto[]>([]);
 
   function logout() {
     handleLogout();

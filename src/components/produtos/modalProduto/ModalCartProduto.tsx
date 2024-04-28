@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import CardProdutoCarrinho from "../cardProduto/CardProdutoCarrinho";
-import Produto from "../../../models/Produto";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { buscar } from "../../../services/Service";
 import { useNavigate } from "react-router-dom";
+import { CarrinhoContext } from '../../../contexts/CarrinhoContext';
 
 
 function ModalCartProduto() {
+  const { carrinho, setCarrinho } = useContext(CarrinhoContext);
   const [show, setShow] = useState(false);
-  const [produtos, setProdutos] = useState<Produto[]>([]);
+
   const navigate = useNavigate();
 
-  const subtotal = produtos.reduce((acc, produto) => acc + parseFloat(produto.preco), 0);
-  const frete = 5.00;
-  const taxa = 6.00;
+  const subtotal = carrinho.reduce((acc, produto) => acc + parseFloat(produto.preco), 0);
+  const frete = carrinho.length === 0 ? 0 : 5.00;
+  const taxa = carrinho.length === 0 ? 0 : 6.00;
   const total = subtotal + frete + taxa;
 
   const { usuario, handleLogout } = useContext(AuthContext);
@@ -27,35 +28,25 @@ function ModalCartProduto() {
     }
   }, [token]);
 
-  async function buscarProdutos() {
-    try {
-      await buscar('/produtos', setProdutos, {
-        headers: {
-          Authorization: token,
-        },
-      });
-    } catch (error: any) {
-      if (error.toString().includes('403')) {
-        alert('O token expirou, favor logar novamente.')
-        handleLogout()
-      }
-    }
-  }
-
-  
+  const handleShowCart = () => {
+    console.log('Conteúdo do carrinho:', carrinho);
+  };
 
   useEffect(() => {
-    buscarProdutos();
-  }, [produtos.length]);
+    // buscarProdutos();
+  }, [carrinho.length]);
+  
 
   return (
     <>
       <div>
         <div className="items-center grid justify-center ">
           <button onClick={() => setShow(!show)}>
-            <p className="flex h-1 w-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white ml-5">
-            {produtos.length}
-            </p>
+          {carrinho.length !== 0 && (
+  <p className="flex h-1 w-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white ml-5">
+    {carrinho.length}
+  </p>
+)}
             <svg
               color="white"
               xmlns="https://www.w3.org/2000/svg"
@@ -118,7 +109,7 @@ function ModalCartProduto() {
                     <div className="md:flex items-center py-8">
 
                     <div className='md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center border-t py-8 border-green-200'>
-      {produtos.map((produto) => (
+      {carrinho.map((produto) => (
         <CardProdutoCarrinho key={produto.id} post={produto} />
       ))}
     </div>
@@ -169,6 +160,13 @@ function ModalCartProduto() {
                           className="text-base leading-none w-full py-5 bg-green-800 border-green-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-800 text-white rounded-lg hover:bg-green-600"
                         >
                           Comprar
+                        </button>
+
+                        <button
+                          onClick={handleShowCart}
+                          className="text-base leading-none w-full py-5 bg-blue-800 border-blue-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 text-white rounded-lg hover:bg-blue-600"
+                        >
+                          Mostrar Carrinho
                         </button>
                       </div>
                     </div>
