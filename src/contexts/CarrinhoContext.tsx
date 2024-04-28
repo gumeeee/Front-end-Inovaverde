@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import Produto from '../models/Produto';
+import { AuthContext } from './AuthContext';
 
 type CarrinhoContextType = {
   carrinho: Produto[];
@@ -16,6 +17,17 @@ export const CarrinhoContext = createContext<CarrinhoContextType>({
 });
 
 export function CarrinhoProvider({ children }) {
+
+  const { usuario } = useContext(AuthContext); // Use o AuthContext para obter o usuário atual
+
+  useEffect(() => {
+    // Quando o usuário muda, limpa o carrinho
+    if (usuario.id === 0) { // Verifique se o usuário está deslogado
+      setCarrinho([]);
+      sessionStorage.removeItem('carrinho');
+    }
+  }, [usuario]); // Adicione o usuário como dependência do useEffect
+
   const [carrinho, setCarrinho] = useState(() => {
     const carrinhoSalvo = sessionStorage.getItem('carrinho');
     return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
