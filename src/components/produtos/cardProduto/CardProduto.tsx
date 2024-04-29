@@ -22,6 +22,8 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
       // Se o produto já está no carrinho, exibe um alerta
       alert('Este item já está no carrinho!');
     } else {
+      // Define a quantidade do produto no carrinho
+      post.quantidadeCarrinho = 1;
       // Se o produto não está no carrinho, adiciona ao carrinho e atualiza o estado
       adicionarAoCarrinho(post);
     }
@@ -31,7 +33,9 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
     console.log('Conteúdo do carrinho:', carrinho);
   };
 
-  
+  carrinho.forEach((item, index) => {
+    console.log(`Item ${index + 1}:`, item);
+  });
 
   return (  
     <div className="card card-compact w-80 bg-green-800 shadow-xl rounded-lg">

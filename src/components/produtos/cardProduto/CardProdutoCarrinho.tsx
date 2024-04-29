@@ -11,17 +11,23 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
 
   const [carrinhoQuantidade, setQuantidade] = useState(1);
 
+  const { atualizarQuantidadeCarrinho } = useContext(CarrinhoContext); // Importe
+
   const totalProdutoUnico = carrinhoQuantidade * post.preco;
 
   const handleIncrease = () => {
     if (carrinhoQuantidade < post.estoque) {
       setQuantidade(carrinhoQuantidade + 1);
+      atualizarQuantidadeCarrinho(post.id, carrinhoQuantidade + 1);
+      console.log(`Quantidade aumentada para ${carrinhoQuantidade + 1}`);
     }
   };
-
+  
   const handleDecrease = () => {
     if (carrinhoQuantidade > 1) {
       setQuantidade(carrinhoQuantidade - 1);
+      atualizarQuantidadeCarrinho(post.id, carrinhoQuantidade - 1);
+      console.log(`Quantidade diminuída para ${carrinhoQuantidade - 1}`);
     }
   };
 

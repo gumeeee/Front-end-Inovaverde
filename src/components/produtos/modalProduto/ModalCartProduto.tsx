@@ -12,7 +12,7 @@ function ModalCartProduto() {
 
   const navigate = useNavigate();
 
-  const subtotal = carrinho.reduce((acc, produto) => acc + Number(produto.preco), 0);
+  const subtotal = carrinho.reduce((acc, produto) => acc + Number(produto.preco * produto.quantidadeCarrinho), 0);
   const frete = carrinho.length === 0 ? 0 : 5.00;
   const taxa = carrinho.length === 0 ? 0 : 6.00;
   const total = subtotal + frete + taxa;

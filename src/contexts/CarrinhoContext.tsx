@@ -7,6 +7,7 @@ type CarrinhoContextType = {
   setCarrinho: React.Dispatch<React.SetStateAction<Produto[]>>;
   adicionarAoCarrinho: (produto: Produto) => void;
   removerDoCarrinho: (idProduto: number) => void;
+  atualizarQuantidadeCarrinho: (idProduto: number, novaQuantidade: number) => void; // Adicione esta linha
 };
 
 export const CarrinhoContext = createContext<CarrinhoContextType>({
@@ -14,11 +15,20 @@ export const CarrinhoContext = createContext<CarrinhoContextType>({
   setCarrinho: () => {},
   adicionarAoCarrinho: () => {},
   removerDoCarrinho: () => {},
+  atualizarQuantidadeCarrinho: () => {}, // Adicione esta linha
 });
 
 export function CarrinhoProvider({ children }) {
 
   const { usuario } = useContext(AuthContext); // Use o AuthContext para obter o usuário atual
+
+
+  
+  const atualizarQuantidadeCarrinho = (idProduto, novaQuantidade) => {
+    setCarrinho(carrinho.map(produto => 
+      produto.id === idProduto ? { ...produto, quantidadeCarrinho: novaQuantidade } : produto
+    ));
+  };
 
   useEffect(() => {
     // Quando o usuário muda, limpa o carrinho
@@ -50,7 +60,7 @@ export function CarrinhoProvider({ children }) {
   };
 
   return (
-    <CarrinhoContext.Provider value={{ carrinho, setCarrinho, adicionarAoCarrinho, removerDoCarrinho }}>
+    <CarrinhoContext.Provider value={{ carrinho, setCarrinho, adicionarAoCarrinho, removerDoCarrinho, atualizarQuantidadeCarrinho }}>
       {children}
     </CarrinhoContext.Provider>
   );
