@@ -25,7 +25,6 @@ export default function Example() {
     handleLogout();
     alert("Usuário deslogado com sucesso");
     navigate("/login");
-    sessionStorage.clear();
   }
 
   return (
@@ -50,7 +49,7 @@ export default function Example() {
                 className="flex flex-shrink-0 items-center"
                 style={{ color: "white", fontSize: "24px" }}
               >
-                <Link to="/login" style={{ fontFamily: 'Poppins, sans-serif' }} onClick={() => logout()}>Inova Verde</Link>
+                <Link to="/home" style={{ fontFamily: 'Poppins, sans-serif' }}>Inova Verde</Link>
 
               </div>
               {usuario.id == 0 && (
