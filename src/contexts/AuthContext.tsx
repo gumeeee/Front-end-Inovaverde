@@ -66,6 +66,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             creditoCarbono: 0
         })
         sessionStorage.removeItem('@App:usuario'); // Alterado para sessionStorage
+        sessionStorage.removeItem('carrinho');
 
     }
 

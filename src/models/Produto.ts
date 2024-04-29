@@ -2,6 +2,7 @@ import Categoria from './Categoria';
 import Usuario from './Usuario';
 
 export default interface Produto {
+  quantidadeCarrinho: number;
   id: number;
   nome: string;
   preco: number; //pode errado (BIG DECIMAL)

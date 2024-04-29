@@ -18,11 +18,14 @@ import Carrossel from "./components/carrossel/Carrossel";
 import Carrinho from "./pages/cart/Carrinho";
 import Loja from "./pages/loja/Loja";
 import ListaIntegrantes from "./pages/listaIntegrantes/ListaIntegrantes";
+import { CarrinhoProvider } from "./contexts/CarrinhoContext";
 
 function App() {
+
   return (
     <>
       <AuthProvider>
+      <CarrinhoProvider>
         <BrowserRouter>
           <Navbar />
           <div className="min-h-[80vh]">
@@ -34,6 +37,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/categorias" element={<ListaCategorias />} />
               <Route path="/contato" element={<ListaCategorias />} />
+
               <Route
                 path="/cadastroCategoria"
                 element={<FormularioCategoria />}
@@ -52,6 +56,7 @@ function App() {
                 path="/editarProduto/:id"
                 element={<FormularioProduto />}
               />
+
               <Route path="/deletarProduto/:id" element={<DeletarProduto />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/carrossel" element={<Carrossel />} />
@@ -62,6 +67,7 @@ function App() {
           </div>
           <Footer />
         </BrowserRouter>
+        </CarrinhoProvider>
       </AuthProvider>
     </>
   );

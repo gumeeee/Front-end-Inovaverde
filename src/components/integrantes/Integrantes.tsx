@@ -9,7 +9,7 @@ interface Integrante {
 function Integrantes(integrante: Integrante) {
   return (
     <>
-      <div className="my-5 mx-5 flex items-center justify-center bg-gray-900 dark:bg-white">
+      <div className="my-5 mx-5 flex items-center justify-center bg-gray-900 dark:bg-white z-[-1]">
         <div className="flex items-center flex-col gap-2">
           <div className="w-[10rem] h-[10rem] rounded-xl shadow-3xl ">
             <div className="h-full max-w-sm mx-auto w-30 lg:mx-0 relative -left-8 opacity-40 blur-xl bg-gradient-to-r from-yellow-400 via-green-700 to-green-600"></div>

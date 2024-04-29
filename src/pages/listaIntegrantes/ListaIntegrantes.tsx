@@ -3,7 +3,7 @@ import Integrantes from "../../components/integrantes/Integrantes";
 function ListaIntegrantes() {
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-20">
+      <div className="flex flex-wrap justify-center gap-20 z-[-1]">
         <Integrantes
           name={"Asttryd Pacheco"}
           usuario={"@Asttryd"}
