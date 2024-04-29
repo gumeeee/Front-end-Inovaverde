@@ -33,7 +33,7 @@ function FormularioProduto() {
     foto: '',
     categoria: null,
     usuario: null,
-
+    quantidadeCarrinho: 1,
   });
 
   async function buscarProdutoPorId(id: string) {
