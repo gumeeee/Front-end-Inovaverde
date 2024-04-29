@@ -29,14 +29,6 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
     }
   };
 
-  const handleShowCart = () => {
-    console.log('Conteúdo do carrinho:', carrinho);
-  };
-
-  carrinho.forEach((item, index) => {
-    console.log(`Item ${index + 1}:`, item);
-  });
-
   return (  
     <div className="card card-compact w-80 bg-green-800 shadow-xl rounded-lg">
       <figure>
@@ -51,8 +43,6 @@ function CardProduto({ post }: CardProdutoProps): JSX.Element {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '10px', paddingTop: '0px', paddingBottom: '0px', paddingLeft: '60px', paddingRight: '0px'}}>
             <button onClick={handleAddToCart} className="btn btn-primary bg-yellow-600 text-white rounded-lg w-44 h-9 py-0.5 text-center my-4 hover:bg-yellow-200 hover:text-yellow-900">Adicionar ao carrinho</button>
           </div>
-
-          <button onClick={handleShowCart} className="btn btn-primary bg-blue-600 text-white rounded-lg w-44 h-9 py-0.5 text-center my-4 hover:bg-blue-200 hover:text-blue-900">Mostrar carrinho</button>
           <div className="flex -ml-3">
             {(usuario.id === 1) && (
               <Link to={`/editarProduto/${post.id}`} className='w-full text-white bg-green-600 hover:bg-green-700 flex items-center justify-center py-2 rounded-bl-lg'>

@@ -25,6 +25,7 @@ export default function Example() {
     handleLogout();
     alert("Usuário deslogado com sucesso");
     navigate("/login");
+    sessionStorage.clear();
   }
 
   return (
